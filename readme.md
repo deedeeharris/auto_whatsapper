@@ -4,7 +4,7 @@ Auto WhatApper is a Streamlit web app that automates the process of sending What
 
 ## Prerequisites
 
-- Python 3.x
+- Python 3.12.x
 - Streamlit
 - Playwright library
 - Google Chrome
