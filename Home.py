@@ -32,9 +32,6 @@ def update_script():
 update_script()
 
 
-
-
-
 st.set_page_config(
     page_title="Auto WhatApper - Home",
     page_icon="💬",
