@@ -7,7 +7,7 @@ st.set_page_config(
 
 st.write("# Welcome to Auto WhatApper!")
 # add linkedin link for Yedidya Harris
-st.markdown('#### By [Yedidya Harris](https://www.linkedin.com/in/yedidyaharris/)')
+st.markdown('#### By [Yedidya Harris](https://www.linkedin.com/in/yedidya-harris/)')
 
 st.sidebar.success("Select an option above.")
 
