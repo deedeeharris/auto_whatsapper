@@ -23,7 +23,7 @@ Auto WhatApper is a Streamlit web app that automates the process of sending What
     ```bash
     playwright install
     ```
-
+ 
    This will download the necessary browser binaries.
 
 ## Usage
