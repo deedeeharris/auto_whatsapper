@@ -1,12 +1,14 @@
 # Auto WhatApper
 
-Auto WhatApper is a Python script that automates the process of sending WhatsApp messages to multiple recipients, either phone numbers or contacts/groups. It utilizes the Playwright library to interact with the WhatsApp Web interface.
+Auto WhatApper is a Streamlit web app that automates the process of sending WhatsApp messages to multiple recipients, either phone numbers or contacts/groups. It utilizes the Playwright library to interact with the WhatsApp Web interface.
 
 ## Prerequisites
 
 - Python 3.x
+- Streamlit
 - Playwright library
 - Google Chrome
+- Microsoft Office Excel
 
 ## Installation
 
@@ -17,38 +19,41 @@ Auto WhatApper is a Python script that automates the process of sending WhatsApp
     pip install -r requirements.txt
     ```
 
-3. Make sure Google Chrome is installed on your system.
+3. Install Microsoft Office Excel on your system.
+
+4. Install Playwright using the following command:
+
+    ```bash
+    playwright install
+    ```
+
+   This will download the necessary browser binaries.
 
 ## Usage
 
-### 1. Setup
+1. Start a WhatsApp Web session by scanning the QR code on the [WhatsApp Web](https://web.whatsapp.com/) page.
 
-- Start a WhatsApp Web session by scanning the QR code on the [WhatsApp Web](https://web.whatsapp.com/) page.
-- Open Google Chrome with remote debugging enabled:
+2. Open Google Chrome with remote debugging enabled:
 
     ```bash
     "C:\Program Files\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222
     ```
 
-### 2. Running the Script
-
-- To send messages to phone numbers:
+3. Run the Streamlit app:
 
     ```bash
-    python send_msgs.py numbers
+    streamlit run Home.py
     ```
 
-- To send messages to contacts/groups:
+4. Access the app in your browser by visiting [http://localhost:8501](http://localhost:8501).
 
-    ```bash
-    python send_msgs.py contacts
-    ```
+5. Use the Streamlit app interface to send messages to phone numbers or contacts/groups. The app will automatically open the relevant Excel files.
 
-### 3. Customizing Messages
+### Customizing Messages
 
 - Customize your messages by editing the `data/message.txt` file.
 
-### 4. Input Data
+### Input Data
 
 - Phone numbers are read from the `data/numbers.xlsx` file.
 - Contacts/groups names are read from the `data/contacts.xlsx` file.
