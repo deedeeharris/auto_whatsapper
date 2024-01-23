@@ -12,16 +12,13 @@ Auto WhatApper is a Streamlit web app that automates the process of sending What
 
 ## Installation
 
-1. Install Python 3.x from [python.org](https://www.python.org/).
-2. Install the required Python packages using the following command:
+1. Install the required Python packages using the following command:
 
     ```bash
     pip install -r requirements.txt
     ```
-
-3. Install Microsoft Office Excel on your system.
-
-4. Install Playwright using the following command:
+    
+2. Install Playwright using the following command:
 
     ```bash
     playwright install
