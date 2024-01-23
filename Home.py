@@ -3,6 +3,8 @@ import subprocess
 import sys
 import os
 
+# adding a comment here
+
 def update_script():
     try:
         # Get the script's directory
