@@ -12,24 +12,43 @@ Auto WhatApper is a Streamlit web app that automates the process of sending What
 
 ## Installation
 
-1. Install the required Python packages using the following command:
+1. Clone this repository:
+
+    ```bash
+    git clone https://github.com/deedeeharris/auto_whatsapper.git
+    ```
+
+2. Navigate to the cloned repository:
+
+    ```bash
+    cd auto_whatsapper
+    ```
+
+3. Edit the `.env` file and set the `root_path` variable to the parent folder where you cloned this repository. For example:
+
+    ```ini
+    # .env
+
+    root_path=/path/to/parent/folder
+    ```
+
+4. Install the required Python packages using the following command:
 
     ```bash
     pip install -r requirements.txt
     ```
 
-2. Install Playwright using the following command:
+5. Install Playwright using the following command:
 
     ```bash
     playwright install
     ```
- 
+
    This will download the necessary browser binaries.
 
 ## Usage
 
 1. Initiate a WhatsApp Web session by scanning the QR code on the [WhatsApp Web](https://web.whatsapp.com/) page, ensuring that it remains logged into your Chrome profile.
-
 
 2. Run the Streamlit app:
 
