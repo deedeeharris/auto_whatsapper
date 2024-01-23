@@ -17,7 +17,7 @@ Auto WhatApper is a Streamlit web app that automates the process of sending What
     ```bash
     pip install -r requirements.txt
     ```
-    
+
 2. Install Playwright using the following command:
 
     ```bash
@@ -42,7 +42,7 @@ Auto WhatApper is a Streamlit web app that automates the process of sending What
     streamlit run Home.py
     ```
 
-4. Access the app in your browser by visiting [http://localhost:8501](http://localhost:8501).
+4. Access the app in your browser by visiting http://localhost:8501.
 
 5. Use the Streamlit app interface to send messages to phone numbers or contacts/groups. The app will automatically open the relevant Excel files.
 
