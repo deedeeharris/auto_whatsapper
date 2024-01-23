@@ -2,8 +2,11 @@
 import subprocess
 import streamlit as st
 import os
+from dotenv import load_dotenv
 
-root_path = rf'C:\ai\whatsapp'
+# get root path from .env file
+load_dotenv()
+root_path = os.getenv("root_path")
 
 # large text area for the message
 st.write("### Enter your message here:")
