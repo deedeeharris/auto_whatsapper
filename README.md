@@ -1,4 +1,4 @@
-# Auto WhatApper
+# Auto WhatsApper
 
 Auto WhatApper is a Streamlit web app that automates the process of sending WhatsApp messages to multiple recipients, either phone numbers or contacts/groups. It utilizes the Playwright library to interact with the WhatsApp Web interface.
 
