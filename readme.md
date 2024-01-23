@@ -48,12 +48,12 @@ Auto WhatApper is a Streamlit web app that automates the process of sending What
 
 ### Customizing Messages
 
-- Customize your messages by editing the `data/message.txt` file.
+- You can enter the text of the message within the app or by editing the `data/message.txt` file.
 
 ### Input Data
 
-- Phone numbers are read from the `data/numbers.xlsx` file.
-- Contacts/groups names are read from the `data/contacts.xlsx` file.
+- Phone numbers are sourced from the data/numbers.xlsx file, whether they exist in your contacts or not.
+- Contacts and group names are retrieved from the data/contacts.xlsx file, encompassing both saved contacts and groups of which you are a member.
 
 ## Logging
 
@@ -62,10 +62,6 @@ Auto WhatApper is a Streamlit web app that automates the process of sending What
 ## Contributing
 
 Contributions are welcome! Feel free to open an issue or submit a pull request.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
 
 ---
 
