@@ -77,6 +77,6 @@ Auto WhatApper is a Streamlit web app that automates the process of sending What
 
 Contributions are welcome! Feel free to open an issue or submit a pull request.
 
----
+----
 
 **By [Yedidya Harris](https://www.linkedin.com/in/yedidyaharris/)**
