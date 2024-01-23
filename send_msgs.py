@@ -50,7 +50,7 @@ def send_to_one_number(page, phone_number, message):
     page.type(msg_box_selector, message)
     send_button_selector = 'button[data-tab="11"]' 
     page.wait_for_selector(send_button_selector)
-    #page.click(send_button_selector) # click on send button
+    page.click(send_button_selector) # click on send button
     page.wait_for_timeout(3000)
     return True
 
@@ -75,7 +75,7 @@ def send_to_one_contact(page, contact, message):
     page.type(msg_box_selector, message)
     send_button_selector = 'button[data-tab="11"]' 
     page.wait_for_selector(send_button_selector)
-    #page.click(send_button_selector) # click on send button
+    page.click(send_button_selector) # click on send button
     page.wait_for_timeout(3000)
     return True
 
