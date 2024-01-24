@@ -80,6 +80,11 @@ Auto WhatApper is a Streamlit web app that automates the process of sending What
 
 - Message delivery status is logged in the `log.log` file.
 
+## Warning
+
+- This app is for educational purposes only. Please use it responsibly and at your own risk.
+- It is not recommended to use this app to send messages to large numbers of recipients, as this may result in your phone number being blocked by WhatsApp.
+
 ## Contributing
 
 Contributions are welcome! Feel free to open an issue or submit a pull request.
