@@ -33,7 +33,7 @@ def update_script():
         print(f"Error updating script: {e}")
 
 # Call the function to update the script
-#update_script()
+#update_script() # currently commented out, since i don't want the user to have auto updates
 
 
 st.set_page_config(

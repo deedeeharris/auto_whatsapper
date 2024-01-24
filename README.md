@@ -61,19 +61,15 @@ Auto WhatApper is a Streamlit web app that automates the process of sending What
 
 1. Initiate a WhatsApp Web session by scanning the QR code on the [WhatsApp Web](https://web.whatsapp.com/) page, ensuring that it remains logged into your Chrome profile.
 
-2. Run the Streamlit app:
+2. Close all open Chrome windows.
 
-    ```bash
-    streamlit run Home.py
-    ```
-
-3. Access the app in your browser by visiting http://localhost:8501.
+3. On windows, open the .bat file in the root_path folder. This will open a new Chrome window (in debug mode) and start a Streamlit server.
 
 4. Use the Streamlit app interface to send messages to phone numbers or contacts/groups. The app will automatically open the relevant Excel files.
 
 ### Customizing Messages
 
-- You can enter the text of the message within the app or by editing the `data/message.txt` file.
+- You can enter the text of the message within the app (click the "Open txt message" button to open the message.txt file), which updates the data/message.txt file.
 
 ### Input Data
 
