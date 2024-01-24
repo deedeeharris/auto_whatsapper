@@ -1,3 +1,5 @@
+# send_msgs.py is the script that sends the messages.
+
 from playwright.sync_api import sync_playwright
 import subprocess
 import sys

@@ -31,20 +31,31 @@ Auto WhatApper is a Streamlit web app that automates the process of sending What
 
     root_path=/path/to/parent/folder
     ```
+4. Create a virtual env in the root_path folder, and activate it. For example:
+    
+        ```bash
+        cd /path/to/parent/folder
+        python -m venv wa
+        .\wa\Scripts\activate
+        ```
 
-4. Install the required Python packages using the following command:
+5. Install the required Python packages using the following command:
 
     ```bash
     pip install -r requirements.txt
     ```
 
-5. Install Playwright using the following command:
+6. Install Playwright using the following command:
 
     ```bash
     playwright install
     ```
 
    This will download the necessary browser binaries.
+
+7. Edit the bat file in the root_path folder, and update the root path accordingly.
+
+8. In addition, make sure the your default chrome.exe path in the bat file is correct (this script will control your chrome browser, and not a standard chrome driver).
 
 ## Usage
 

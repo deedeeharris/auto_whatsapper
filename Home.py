@@ -1,3 +1,5 @@
+# Home.py is the home page of the app. It is the first page that the user sees when he opens the app.
+
 import streamlit as st
 import subprocess
 import sys

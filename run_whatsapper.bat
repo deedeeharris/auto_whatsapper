@@ -1,3 +1,4 @@
+
 @echo off
 pushd C:\ai\whatsapp\auto_whatsapper
 call C:\ai\whatsapp\wa\Scripts\activate.bat
