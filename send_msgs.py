@@ -4,23 +4,34 @@ import sys
 import logging
 import pandas as pd
 
-# Add a subprocess to open Chrome with remote debugging
-subprocess.Popen([
-    "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
-    "--remote-debugging-port=9222"
-])
+# subprocess to open Chrome with remote debugging (commented - since it opens in the bat file)
+# subprocess.Popen([
+#     "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+#     "--remote-debugging-port=9222"
+# ])
 logging.basicConfig(filename='log.log', level=logging.INFO)
 
-
+# y harris
 # function to send a single message to a single phone number
 def send_to_one_number(page, phone_number, message):
     page.wait_for_timeout(3000)
-    new_chat_selector = 'div[title="New chat"]'
+
+    # check for the lang of whatsapp web
+    html = page.content()
+    if 'lang="en"' in html: lang='english'
+    if 'lang="he"' in html: lang='hebrew'
+
+    # click the new chat button
+    if lang == 'english': chat_title = 'New chat'
+    if lang == 'hebrew': chat_title = 'צ\'אט חדש'
+    new_chat_selector = f'div[title="{chat_title}"]'
     page.click(new_chat_selector)
     page.wait_for_timeout(1000)
 
     # click on the search box and type the phone number
-    search_box_selector = 'div[title="Search input textbox"]'
+    if lang == 'english': term_to_search = "Search input textbox"
+    if lang == 'hebrew': term_to_search = "תיבת טקסט להזנת החיפוש"
+    search_box_selector = f'div[title="{term_to_search}"]'
     page.click(search_box_selector)
     page.type(search_box_selector, phone_number)
     page.wait_for_timeout(3000)
@@ -31,55 +42,104 @@ def send_to_one_number(page, phone_number, message):
 
     # check if the phone number is saved as a contact, in the html code there will be "No results found for"
     # look in the html source code for "No results found for"
-    term_to_search = "No results found for"
+    term_to_search_en = "No results found for"
+    term_to_search_heb = "לא נמצאו תוצאות"
     # get html code
     html = page.inner_html('body')
     # check if the term is in the html code
-    if term_to_search in html:
-        print('No results found for this phone number')
+    if term_to_search_en in html or term_to_search_heb in html:
+        print('No results found for this phone numsber')
         page.wait_for_timeout(1000)
         page.keyboard.press('Escape')
         return False
         
 
-
     # click on the message box and type the message
-    msg_box_selector = 'div[title="Type a message"]'
+    if lang == 'english': msg_box_title = 'Type a message'
+    if lang == 'hebrew': msg_box_title = 'הקלדת הודעה'
+
+    msg_box_selector = f'div[title="{msg_box_title}"]'
     page.wait_for_selector(msg_box_selector)
     page.click(msg_box_selector)
-    page.type(msg_box_selector, message)
-    send_button_selector = 'button[data-tab="11"]' 
-    page.wait_for_selector(send_button_selector)
-    page.click(send_button_selector) # click on send button
+
+
+    # Replace line breaks with Shift+Enter
+    lines = message.split('\n')
+    for line in lines:
+        page.type(msg_box_selector, line)
+        page.keyboard.down('Shift')
+        page.keyboard.press('Enter')
+        page.keyboard.up('Shift')
+
+    page.keyboard.press('Enter') # send the message
+
+    # send_button_selector = 'button[data-tab="11"]' 
+    # page.wait_for_selector(send_button_selector)
+    # page.click(send_button_selector) # click on send button
+    
     page.wait_for_timeout(3000)
     return True
 
 
 # function to send a single message to a single phone number
 def send_to_one_contact(page, contact, message):
+    # check for the lang of whatsapp web
+    html = page.content()
+    if 'lang="en"' in html: lang='english'
+    if 'lang="he"' in html: lang='hebrew'
 
     # click on the search box and type the phone number
-    search_box_selector = 'div[title="Search input textbox"]'
+    if lang == 'english': term_to_search = "Search input textbox"
+    if lang == 'hebrew': term_to_search = "תיבת טקסט להזנת החיפוש"
+    search_box_selector = f'div[title="{term_to_search}"]' # or "תיבת טקסט להזנת החיפוש"
     page.click(search_box_selector)
     page.type(search_box_selector, contact)
     page.wait_for_timeout(3000)
 
     result_selector = f'span[title="{contact}"]'
-    page.wait_for_selector(result_selector)
-    page.click(result_selector)
+    try:
+        page.wait_for_selector(result_selector, timeout=3000)
+        page.click(result_selector)
+    except:
+        print(f'Timeout: Selector "{result_selector}" not found within 3 seconds.')
+        page.keyboard.press('Escape')
+        return False
+
+    # term_to_search_en = "No results found for"
+    # term_to_search_heb = "לא נמצאו"
+    # # get html code
+    # html = page.inner_html('body')
+    # # check if the term is in the html code
+    # if term_to_search_en in html or term_to_search_heb in html:
+    #     print('No results found for this phone numsber')
+    #     page.wait_for_timeout(1000)
+    #     page.keyboard.press('Escape')
+    #     return False
 
     # click on the message box and type the message
-    msg_box_selector = 'div[title="Type a message"]'
+    if lang == 'english': msg_box_title = 'Type a message'
+    if lang == 'hebrew': msg_box_title = 'הקלדת הודעה'
+    msg_box_selector = f'div[title="{msg_box_title}"]'
     page.wait_for_selector(msg_box_selector)
     page.click(msg_box_selector)
-    page.type(msg_box_selector, message)
-    send_button_selector = 'button[data-tab="11"]' 
-    page.wait_for_selector(send_button_selector)
-    page.click(send_button_selector) # click on send button
+
+    # Replace line breaks with Shift+Enter
+    lines = message.split('\n')
+    for line in lines:
+        page.type(msg_box_selector, line)
+        page.keyboard.down('Shift')
+        page.keyboard.press('Enter')
+        page.keyboard.up('Shift')
+
+
+    page.keyboard.press('Enter') # send the message
+
+    # send_button_selector = 'button[data-tab="11"]' 
+    # page.wait_for_selector(send_button_selector)
+    # page.click(send_button_selector) # click on send button
+
     page.wait_for_timeout(3000)
     return True
-
-
 
 
 # Start a new session with Playwright using the sync_playwright function.
@@ -125,6 +185,7 @@ with sync_playwright() as playwright:
         # send message to all phone numbers, and log success and failure
         for phone_number in phone_numbers:
             phone_number = str(phone_number)
+            print("Trying to send to ",phone_number)
             result = send_to_one_number(page, phone_number, message)
             if result:
                 logging.info(f'Message sent successfully to {phone_number}')

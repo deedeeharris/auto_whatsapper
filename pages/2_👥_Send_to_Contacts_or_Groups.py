@@ -16,12 +16,14 @@ st.write("### Enter your message here:")
 if st.button(rf'Open xlsx file with contacts\groups names'):
     subprocess.Popen(['start', rf'{root_path}\auto_whatsapper\data\contacts.xlsx'], shell=True)
 
-message = st.text_area(label=" ", height=300)
+if st.button('Open txt message'):
+    subprocess.Popen(['start', rf'{root_path}\auto_whatsapper\data\message.txt'], shell=True)
+#message = st.text_area(label=" ", height=300)
 
 if st.button('Send'):
     activate_script = os.path.join(root_path, 'wa', 'Scripts', 'activate.bat')
     script_path = os.path.join(root_path, 'auto_whatsapper', 'send_msgs.py')
 
-    cmd = rf'pushd "{root_path}\auto_whatsapper" && call "{activate_script}" && start python "{script_path}" "contacts" "{message}" && popd'
+    cmd = rf'pushd "{root_path}\auto_whatsapper" && call "{activate_script}" && start python "{script_path}" "contacts"  && popd'
     subprocess.run(cmd, shell=True)
     st.write("Message sent!")
