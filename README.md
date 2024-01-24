@@ -63,7 +63,7 @@ Auto WhatApper is a Streamlit web app that automates the process of sending What
 
 2. Close all open Chrome windows.
 
-3. On windows, open the .bat file in the root_path folder. This will open a new Chrome window (in debug mode) and start a Streamlit server.
+3. On Windows, open the .bat file in the root_path folder. This will open a new Chrome window (in debug mode) and start a Streamlit server.
 
 4. Use the Streamlit app interface to send messages to phone numbers or contacts/groups. The app will automatically open the relevant Excel files.
 
