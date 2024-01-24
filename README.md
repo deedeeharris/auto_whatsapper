@@ -33,11 +33,11 @@ Auto WhatApper is a Streamlit web app that automates the process of sending What
     ```
 4. Create a virtual env in the root_path folder, and activate it. For example:
     
-        ```
+        
         cd /path/to/parent/folder
         python -m venv wa
         .\wa\Scripts\activate
-        ```
+        
 
 5. Install the required Python packages using the following command:
 
