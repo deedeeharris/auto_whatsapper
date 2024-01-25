@@ -1,4 +1,4 @@
-
+# 2._👥_Send_To_Contacts_Or_Groups.py is the page where the user can send messages to contacts or groups.
 import subprocess
 import streamlit as st
 import os
@@ -19,11 +19,13 @@ if st.button(rf'Open xlsx file with contacts\groups names'):
 if st.button('Open txt message'):
     subprocess.Popen(['start', rf'{root_path}\auto_whatsapper\data\message.txt'], shell=True)
 #message = st.text_area(label=" ", height=300)
+    
+strip_and_try = st.checkbox('Strip contact names if not found, and try again', value=False)
 
 if st.button('Send'):
     activate_script = os.path.join(root_path, 'wa', 'Scripts', 'activate.bat')
     script_path = os.path.join(root_path, 'auto_whatsapper', 'send_msgs.py')
 
-    cmd = rf'pushd "{root_path}\auto_whatsapper" && call "{activate_script}" && start python "{script_path}" "contacts"  && popd'
+    cmd = rf'pushd "{root_path}\auto_whatsapper" && call "{activate_script}" && start python "{script_path}" "contacts" "{strip_and_try}" && popd'
     subprocess.run(cmd, shell=True)
     st.write("Message sent!")
