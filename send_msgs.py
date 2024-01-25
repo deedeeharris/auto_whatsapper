@@ -179,6 +179,22 @@ def send_to_one_contact(page, contact, message, strip_and_try, contact_info):
     # page.wait_for_selector(send_button_selector)
     # page.click(send_button_selector) # click on send button
 
+    # Wait for the #main element to be available
+    page.wait_for_selector('#main')
+
+    # Get the inner HTML of the #main element
+    messages = page.query_selector_all('.selectable-text.copyable-text')
+
+
+    # Save the entire parent including itself to HTML
+    for message in messages:
+        # Get the parent element
+        parent_element = message.evaluate('(element) => element.parentElement.outerHTML')
+
+        # Save the parent element to an HTML file
+        with open(f'message_{messages.index(message) + 1}.html', 'w', encoding='utf-8') as file:
+            file.write(parent_element)
+
     page.wait_for_timeout(3000)
 
     contact_info = pd.concat([contact_info, pd.DataFrame(result_row, index=[0])], ignore_index=True)
