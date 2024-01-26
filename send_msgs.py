@@ -8,6 +8,7 @@ import pandas as pd
 import os
 from datetime import datetime
 from dotenv import load_dotenv
+import pyperclip
 
 # get root path from .env file
 load_dotenv()
@@ -73,13 +74,22 @@ def send_to_one_number(page, phone_number, message):
     page.click(msg_box_selector)
 
 
-    # Replace line breaks with Shift+Enter
-    lines = message.split('\n')
-    for line in lines:
-        page.type(msg_box_selector, line)
-        page.keyboard.down('Shift')
-        page.keyboard.press('Enter')
-        page.keyboard.up('Shift')
+    # # Replace line breaks with Shift+Enter
+    # lines = message.split('\n')
+    # for line in lines:
+    #     page.type(msg_box_selector, line)
+    #     page.keyboard.down('Shift')
+    #     page.keyboard.press('Enter')
+    #     page.keyboard.up('Shift')
+
+    # Set the clipboard content to the original message
+    pyperclip.copy(message)
+    # Focus on the message input box
+    page.click(msg_box_selector)
+    # Paste the message from the clipboard
+    page.keyboard.down('Control')
+    page.keyboard.press('V')
+    page.keyboard.up('Control')
 
     page.keyboard.press('Enter') # send the message
 
@@ -164,13 +174,22 @@ def send_to_one_contact(page, contact, message, strip_and_try, contact_info):
     page.wait_for_selector(msg_box_selector)
     page.click(msg_box_selector)
 
-    # Replace line breaks with Shift+Enter
-    lines = message.split('\n')
-    for line in lines:
-        page.type(msg_box_selector, line)
-        page.keyboard.down('Shift')
-        page.keyboard.press('Enter')
-        page.keyboard.up('Shift')
+    # # Replace line breaks with Shift+Enter
+    # lines = message.split('\n')
+    # for line in lines:
+    #     page.type(msg_box_selector, line)
+    #     page.keyboard.down('Shift')
+    #     page.keyboard.press('Enter')
+    #     page.keyboard.up('Shift')
+
+    # Set the clipboard content to the original message
+    pyperclip.copy(message)
+    # Focus on the message input box
+    page.click(msg_box_selector)
+    # Paste the message from the clipboard
+    page.keyboard.down('Control')
+    page.keyboard.press('V')
+    page.keyboard.up('Control')
 
 
     page.keyboard.press('Enter') # send the message
